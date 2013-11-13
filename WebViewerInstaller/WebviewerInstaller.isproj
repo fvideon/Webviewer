@@ -1,0 +1,48 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+	<PropertyGroup>
+		<!-- Select a Product Configuration -->
+		<InstallShieldProductConfiguration>Express</InstallShieldProductConfiguration>
+		<!-- Select a Visual Studio Configuration / InstallShield Release -->
+		<Configuration>Debug</Configuration>
+		<InstallShieldRelease>$(Configuration)</InstallShieldRelease>
+	</PropertyGroup>
+	<ItemGroup>
+		<!-- The InstallShieldProject item selects the project to build -->
+		<InstallShieldProject Include="$(MSBuildProjectDirectory)\$(MSBuildProjectName).isl"/>
+		<!-- The InstallShieldReleaseFlags sets Release Flags -->
+		<!--<InstallShieldReleaseFlags Include=""/>-->
+		<!-- The InstallShieldMergeModulePath specifies what directories are
+		searched for Merge Modules -->
+		<!--<InstallShieldMergeModulePath Include=""/>-->
+	</ItemGroup>
+	<ItemGroup>
+		<!-- The ProjectReference items refer to any Visual Studio solutions you want to automatically probe for Project Output Groups.  -->
+	</ItemGroup>
+	<ItemGroup>
+		<!-- The TaggedOutputs items allow you to explicitly add extra files to output groups. Each item must include both Name and OutputGroup, as well as TargetPath metadata values. -->
+		<!--<TaggedOutputs Include="C:\My Test Exe.exe">
+			<Name>My Test Project</Name>
+			<OutputGroup>Primary output</OutputGroup>
+			<TargetPath>My Test Exe.exe</TargetPath>
+		</TaggedOutputs> -->
+	</ItemGroup>
+	<Import Project="$(MSBuildExtensionsPath32)\InstallShield\2012SpringLimited\InstallShield.targets"/>
+	<ItemGroup>
+		<ProjectReference Include="..\ArchiveRTNav\ArchiveRTNav.csproj">
+			<Name>ArchiveRTNav</Name>
+			<Project>{AD13101B-C62E-403A-92DF-720D092E2473}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\SlideViewer\SlideViewer.csproj">
+			<Name>SlideViewer</Name>
+			<Project>{3C61BED7-C158-45BE-BFC5-54594B73993A}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\WebViewer\WebViewer.csproj">
+			<Name>WebViewer</Name>
+			<Project>{2D37C77A-8184-4DD0-8BE2-6575FB4F8F96}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\WorkSpace\WorkSpace.csproj">
+			<Name>WorkSpace</Name>
+			<Project>{14131582-9E34-4C54-890D-B615F414BB9B}</Project>
+		</ProjectReference>
+	</ItemGroup>
+</Project>
